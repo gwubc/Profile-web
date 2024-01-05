@@ -1,0 +1,60 @@
+pipeline {
+    agent {
+        node {
+            label 'worker-node'
+            }
+      }
+    stages {
+	stage('Scm'){
+	   steps {
+       checkout scmGit(
+    branches: [[name: "release"]],
+    userRemoteConfigs: [[credentialsId:  "github",
+        url: "git@github.com:gwubc/goaltracker.git"]])
+             
+	   }
+	}
+        stage('Build') {
+            steps {
+                echo "Building.."
+                sh '''
+                docker build -t ${JOB_NAME}:${BUILD_ID} .
+                '''
+            }
+        }
+        stage('Test') {
+            steps {
+                echo "Testing.."
+                sh '''
+                docker run ${JOB_NAME}:${BUILD_ID} python -m unittest Test/GoalTracker/*.py
+                '''
+            }
+        }
+        stage('Upload') {
+            steps {
+                sh '''
+                docker tag ${JOB_NAME}:${BUILD_ID}  registry-vpc.us-west-1.aliyuncs.com/gwubc/${JOB_NAME}:${BUILD_ID}
+                docker push registry-vpc.us-west-1.aliyuncs.com/gwubc/${JOB_NAME}:${BUILD_ID}
+                '''
+            }
+        }
+        
+        stage('remote deploy') {
+            steps {
+                
+                sshagent(credentials: ['ubuntu-oracle']) {
+                sh '''
+                pwd
+                hostip="146.235.232.244"
+                rsync  -av compose.yaml ubuntu@${hostip}:~/deploy/
+                rsync  -av start.sh  ubuntu@${hostip}:~/deploy/
+                ssh ubuntu@${hostip}  "export JOB_NAME=${JOB_NAME}; export BUILD_ID=${BUILD_ID}   ; bash /home/ubuntu/deploy/start.sh"
+                '''
+                }
+            }
+        }
+
+    }
+
+    
+}
