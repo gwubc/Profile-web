@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+</head>
+<body>
+
+<div>
+    <div id="login" class="form-container active">
+        <form id="loginForm">
+            <h2>User Login</h2>
+            <label for="loginUsername">Username:</label><br>
+            <input type="text" id="loginUsername" name="username" class="text-input"><br>
+            <label for="loginPassword">Password:</label><br>
+            <input type="password" id="loginPassword" name="password" class="text-input"><br>
+
+            <input type="submit" value="Login">
+            <button class="tab" id="showRegister">Register</button>
+        </form>
+    </div>
+
+    <div id="register" class="form-container">
+        <form id="registerForm">
+            <h2>User Registration</h2>
+            <label for="registerUsername">Username:</label><br>
+            <input type="text" id="registerUsername" name="username" class="text-input"><br>
+            <label for="registerPassword">Password:</label><br>
+            <input type="password" id="registerPassword" name="password" class="text-input"><br>
+
+            <input type="submit" value="Register">
+            <button class="tab" id="showLogin">Login</button>
+        </form>
+
+    </div>
+</div>
+
+<div id="messageWindow"></div>
+</body>
+<script src="{{ url_for('static', filename='auth.js') }}"></script>
+</html>

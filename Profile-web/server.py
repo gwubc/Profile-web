@@ -32,6 +32,9 @@ class Server:
         self._login_manager.login_view = 'Auth.login'
         self._login_manager.user_loader(self._user_manager.find_user_by_id)
 
+        self.auth = Auth(self._user_manager, project_folder)
+        self.app.register_blueprint(self.auth.blueprint)
+
 
 server = Server()
 app = server.app
