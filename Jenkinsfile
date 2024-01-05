@@ -58,7 +58,9 @@ pipeline {
         stage('local deploy') {
             steps {
                 sh '''
-                start.sh
+                docker compose stop
+                docker compose create
+                docker compose start
                 '''
             }
         }
