@@ -1,0 +1,23 @@
+services:
+  mongodb:
+    image: mongo
+    command: mongod --logpath /data/db/mongodb.log
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
+
+  pythonapp:
+    image:  registry.us-west-1.aliyuncs.com/gwubc/${JOB_NAME}:${BUILD_ID}
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb
+    networks:
+      - app-network
+
+volumes:
+  mongo-data:
+
+networks:
+  app-network:
