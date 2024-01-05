@@ -57,11 +57,8 @@ pipeline {
         }
         stage('local deploy') {
             steps {
-                echo 'Deliver....'
                 sh '''
-                docker compose stop
-                docker compose create
-                docker compose start
+                start.sh
                 '''
             }
         }
