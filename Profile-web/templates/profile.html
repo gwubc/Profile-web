@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+</head>
+<body>
+<h1>Welcome, {{ user_name }}!</h1>
+<form action="/logout" method="post">
+    <button type="submit">Logout</button>
+</form>
+
+<form id="introduction_form">
+    <label for="introduction">Introduction: </label><br>
+    <textarea id="introduction" cols="50" rows="10">{{ introduction }}</textarea><br>
+    <input type="submit" value="Update">
+</form>
+<div id="messageWindow"></div>
+</body>
+<script src="{{ url_for('static', filename='profile.js') }}"></script>
+</html>
