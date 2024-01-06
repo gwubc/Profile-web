@@ -10,7 +10,7 @@ pipeline {
        checkout scmGit(
     branches: [[name: "release"]],
     userRemoteConfigs: [[credentialsId:  "github",
-        url: "git@github.com:gwubc/goaltracker.git"]])
+        url: "git@github.com:gwubc/Profile-web.git"]])
              
 	   }
 	}
@@ -26,7 +26,7 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                docker run ${JOB_NAME}:${BUILD_ID} python -m unittest Test/GoalTracker/*.py
+                docker run ${JOB_NAME}:${BUILD_ID} python -m unittest Test/ProfileWeb/*.py
                 '''
             }
         }

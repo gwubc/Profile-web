@@ -13,9 +13,8 @@ Mongo_URL = "mongodb://mongodb:27017/project"
 class End_to_End_Test(unittest.TestCase):
 
     def clear_database(self):
-        
         client = MongoClient(Mongo_URL)
-         
+
         db = client["project"]
         collection = db["users"]
         collection.drop()
@@ -27,9 +26,10 @@ class End_to_End_Test(unittest.TestCase):
         chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('--disable-dev-shm-usage')
         self.driver = webdriver.Remote(command_executor=Webdriver_URL, options=chrome_options)
+        # self.driver.implicitly_wait(4)
 
     def tearDown(self):
-        self.driver.close()
+        self.driver.quit()
         self.clear_database()
 
     def _find_text(self, driver, text):
@@ -100,8 +100,8 @@ class End_to_End_Test(unittest.TestCase):
         driver.find_element(By.XPATH, f"//*[contains(@id, 'loginUsername')]").send_keys("testuser")
         driver.find_element(By.XPATH, f"//*[contains(@id, 'loginPassword')]").send_keys("testpass")
         driver.find_element(By.XPATH, f"//*[contains(@value, 'Login')]").click()
-
-        self.assertEqual(len(self._find_text(driver, 'Welcome, testuser!')), 1)
+        time.sleep(0.2)
+        self.assertEqual(len(self._find_text(driver, 'Welcome, testuser!')), 1, msg=driver.page_source)
 
     def test_update_introduction(self):
         driver = self.driver
@@ -118,8 +118,8 @@ class End_to_End_Test(unittest.TestCase):
         driver.find_element(By.XPATH, f"//*[contains(@id, 'loginUsername')]").send_keys("testuser")
         driver.find_element(By.XPATH, f"//*[contains(@id, 'loginPassword')]").send_keys("testpass")
         driver.find_element(By.XPATH, f"//*[contains(@value, 'Login')]").click()
-
-        self.assertEqual(len(self._find_text(driver, "some\nintroduction")), 1)
+        time.sleep(0.2)
+        self.assertEqual(len(self._find_text(driver, "some\nintroduction")), 1, msg=driver.page_source)
 
 
 if __name__ == "__main__":

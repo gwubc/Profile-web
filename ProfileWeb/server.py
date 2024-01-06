@@ -7,10 +7,9 @@ from flask import Flask
 from flask_login import LoginManager
 from flask_pymongo import PyMongo
 
-from GoalTracker.Auth import Auth
-from GoalTracker.Profile import Profile
-from GoalTracker.UserManager import UserManager
-from GoalTracker.logger_config import logger
+from ProfileWeb.Auth import Auth
+from ProfileWeb.UserManager import UserManager
+from ProfileWeb.logger_config import logger
 
 
 class Server:

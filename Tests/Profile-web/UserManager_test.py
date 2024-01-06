@@ -5,7 +5,7 @@ from pathlib import Path
 
 sys.path.append(str(Path(__file__).parent.parent.parent))
 
-from GoalTracker.UserManager import UserManager
+from ProfileWeb.UserManager import UserManager
 
 
 class UserManagerTest(unittest.TestCase):
