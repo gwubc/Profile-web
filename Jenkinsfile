@@ -17,7 +17,7 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                docker run ${JOB_NAME}:${BUILD_ID} python -m unittest Test/ProfileWeb/*.py
+                docker run ${JOB_NAME}:${BUILD_ID} python -m unittest Tests/ProfileWeb/*.py
                 '''
             }
         }
@@ -33,7 +33,7 @@ pipeline {
                         sleep 5
                         docker.image("${JOB_NAME}:${BUILD_ID}").inside("--link test-chrome --link mongodb ") {
                            try {
-                            sh "python -m unittest -v  Test/End-to-end-tests/*.py"
+                            sh "python -m unittest -v  Tests/End-to-end-tests/*.py"
                            }catch (Exception e) {
 
                              // sleep  3600
