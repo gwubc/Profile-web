@@ -8,6 +8,7 @@ from flask_login import LoginManager
 from flask_pymongo import PyMongo
 
 from ProfileWeb.Auth import Auth
+from ProfileWeb.Profile import Profile
 from ProfileWeb.UserManager import UserManager
 from ProfileWeb.logger_config import logger
 
@@ -33,6 +34,9 @@ class Server:
 
         self.auth = Auth(self._user_manager, project_folder)
         self.app.register_blueprint(self.auth.blueprint)
+
+        self.profile = Profile(self._user_manager, project_folder)
+        self.app.register_blueprint(self.profile.blueprint)
 
 
 server = Server()
