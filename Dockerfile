@@ -1,6 +1,6 @@
 FROM python:slim
 
-WORKDIR /usr/src/goaltracker
+WORKDIR /usr/src/ProfileWeb
 
 COPY requirements.txt .
 
@@ -14,5 +14,5 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["python", "Profile-web/server.py"]
+CMD ["python", "ProfileWeb/server.py"]
 # CMD ["gunicorn", "-w", "2", "main:app", "-b", "0.0.0.0:5000"]

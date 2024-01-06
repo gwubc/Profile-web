@@ -2,7 +2,7 @@
 
 ---
 ## Introduction
-This project is not just about the final product; it's a journey of learning and skill development. As a CS student, I embarked on this project to deepen my understanding of modern web development practices and tools.
+This project is not just about the final product; it's a journey of learning and skill development. As a CS student, I embarked on this project to deepen my understanding of modern software development practices and tools.
 
 ## Learning Outcomes
 - **Emphasis on Learning Process:** The primary focus of this project was on the learning process, exploring new tools, and understanding their practical applications in a real-world project.

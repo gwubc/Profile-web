@@ -6,7 +6,7 @@ sys.path.append(str(Path(__file__).parent.parent.parent))
 
 import mongomock
 
-from GoalTracker.server import Server
+from ProfileWeb.server import Server
 
 
 class AuthTest(unittest.TestCase):

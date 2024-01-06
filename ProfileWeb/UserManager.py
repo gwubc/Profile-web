@@ -3,8 +3,8 @@ import typing
 from bson import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from GoalTracker.User import User
-from GoalTracker.logger_config import logger
+from ProfileWeb.User import User
+from ProfileWeb.logger_config import logger
 
 
 class UserManager:

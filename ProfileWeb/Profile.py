@@ -3,8 +3,8 @@ import os
 from flask import Blueprint, jsonify, redirect, render_template, request, url_for
 from flask_login import current_user, login_required
 
-from GoalTracker.UserManager import UserManager
-from GoalTracker.logger_config import logger
+from ProfileWeb.UserManager import UserManager
+from ProfileWeb.logger_config import logger
 
 
 class Profile:
