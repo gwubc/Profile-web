@@ -19,7 +19,8 @@ class Auth:
 
         Args:
             user_manager (UserManager): The UserManager instance to handle user operations.
-            project_folder (str): The base directory of the project, used to set template and static folder paths.
+            project_folder (str): The base directory of the project,
+            used to set template and static folder paths.
         """
 
     def __init__(self, user_manager: UserManager, project_folder):
@@ -45,7 +46,8 @@ class Auth:
         endpoint, and it processes POST requests with the user's username and password.
 
         Returns:
-            jsonify: A JSON response containing the status of the registration and relevant messages.
+            jsonify: A JSON response containing the status of
+            the registration and relevant messages.
         """
         logger.debug("create_user request.json, %s", request.json)
 
@@ -56,7 +58,9 @@ class Auth:
         if existing_user is None:
             result = self.user_manager.create_user(username, password)
             login_user(self.user_manager.find_user_by_id(result))
-            return jsonify({"success": True, "message": "User created successfully", "next": "/profile"}), 201
+            return jsonify({"success": True,
+                            "message": "User created successfully",
+                            "next": "/profile"}), 201
 
         return jsonify({"success": False, "message": "User already exists"}), 409
 
@@ -67,8 +71,9 @@ class Auth:
         authenticates the user, and manages the user session.
 
         Returns:
-            jsonify or render_template: A JSON response for POST requests indicating login success or failure,
-                                        or the login template for GET requests.
+            jsonify or render_template:
+                A JSON response for POST requests indicating login success or failure,
+                or the login template for GET requests.
         """
         if request.method == 'POST':
             username, password = request.json['username'], request.json['password']

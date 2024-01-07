@@ -45,7 +45,8 @@ class Profile:
         Returns:
             redirect: A redirection to either the profile page or the login page.
         """
-        logger.debug("current_user.is_authenticated: %s, %s", current_user.is_authenticated, current_user)
+        logger.debug("current_user.is_authenticated: %s, %s",
+                     current_user.is_authenticated, current_user)
         if current_user.is_authenticated:
             return redirect(url_for('.profile'))
         else:
