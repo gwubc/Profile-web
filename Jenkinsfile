@@ -27,7 +27,7 @@ pipeline {
                     }
                     docker.image("${JOB_NAME}:${BUILD_ID}").inside(""){
                         sh """
-                        coverage  run  -m unittest Test/ProfileWeb/*.py
+                        coverage  run  -m unittest Tests/ProfileWeb/*.py
                         coverage xml
                         """
                         recordCoverage(tools: [[parser: 'COBERTURA', pattern: "coverage.xml"]],
