@@ -47,7 +47,7 @@ class Auth:
         Returns:
             jsonify: A JSON response containing the status of the registration and relevant messages.
         """
-        logger.debug(f"create_user request.json, {request.json}")
+        logger.debug("create_user request.json, %s", request.json)
 
         username, password = request.json['username'], request.json['password']
 
@@ -75,9 +75,9 @@ class Auth:
             user = self.user_manager.find_user_by_username(username)
             if user and self.user_manager.verify_password(user, password):
                 login_user(user)
-                logger.debug(f"login successful username: {username}")
+                logger.debug("login successful username: %s", username)
                 return jsonify({"success": True, "message": "Success", "next": "/profile"}), 200
-            logger.debug(f"login failed username: {username}")
+            logger.debug("login failed username: %s", username)
             return jsonify({"success": False, "message": "Invalid username or password"}), 401
         return render_template('auth.html')
 
