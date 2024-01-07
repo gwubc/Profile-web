@@ -45,9 +45,9 @@ pipeline {
                     docker.image("mongo").withRun("-h mongodb --name mongodb"){ mongo ->
                         sleep 2
                         docker.image("${JOB_NAME}:${BUILD_ID}").withRun("--name serverundertest -h serverundertest --link mongodb"){ app ->
-                            sleep 10
+                            sleep 3
                             docker.image("selenium/standalone-chrome:112.0").withRun("-p 4444:4444 --name test-chrome -h test-chrome --link serverundertest -e 'SE_NODE_OVERRIDE_MAX_SESSIONS=true' -e 'SE_NODE_MAX_SESSIONS=1' "){ chrome ->
-                                sleep 5
+                                sleep 3
                                 docker.image("${JOB_NAME}:${BUILD_ID}").inside("--link test-chrome --link mongodb ") {
                                    try {
                                     sh "python -m unittest -v  Tests/End-to-end-tests/*.py"
@@ -75,7 +75,6 @@ pipeline {
         }
         stage('local deploy') {
             steps {
-                echo 'Deliver....'
                 sh '''
                 docker compose stop
                 docker compose create
