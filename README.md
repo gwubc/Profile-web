@@ -9,19 +9,23 @@ This project is not just about the final product; it's a journey of learning and
 - **Understanding of CI/CD:** Gained hands-on experience with Continuous Integration and Continuous Deployment (CI/CD) using Jenkins and Docker, learning how to automate and streamline the development process.
 
 ## Technology & Features Overview
-- **Web Application Development:** Developed a web application as the core of the project. Key functionalities include:
+- **Web Application Development:** Developed a web application using flask as the main of the project. Key functionalities include:
   - **User Account Creation:** Implemented a user registration system allowing new users to create accounts.
   - **User Authentication:** Integrated login and logout capabilities to manage user access securely.
-  - **User Profile Management:** Enabled users to update and manage their personal profile.
+  - **User Profile Management:** Enabled users to update their personal profile.
 - **Database Management:** Utilized MongoDB for data storage, ensuring robust and scalable data management.
 - **Containerization:** Employed Docker to create isolated environments for both the MongoDB database and the Python web application, enhancing database is security and accessibility by making it accessible only to the server.
 - **Continuous Integration/Continuous Deployment (CI/CD) with Jenkins:** Integrated Jenkins for CI/CD, automating the development pipeline, and ensuring smooth, continuous integration and deployment of the application.
-- **Testing:** Implemented unit testing for individual functionality verification and end-to-end testing to ensure seamless integration of different components.
+- **Testing:** Conducted comprehensive unit testing, include testing with mock objects to verify individual functionalities. And end-to-end testing use selenium to ensure integration of different components.
 
 ## Challenges and Solutions
-[TODO]
 
+#### Debugging in a Multi-component System
+The intricate nature of the project, with its interconnected parts, presented a substantial debugging challenge. A typical issue, such as a failure in user account creation where the new user isn't recorded, could stem from multiple sources. This could range from frontend issues like improper request initiation in the UI, backend mishaps like incorrect request handling on the server, or even disruptions in database connectivity.
 
-## Conclusion
-This project has been a significant learning curve, providing invaluable insights into web development and various modern tools in software engineering. It stands as a testament to the importance of learning and adapting in the ever-evolving field of computer science.
+To combat this, I used a component-wise testing strategy. This involved:
+- Isolating each component: Starting from the user interface, I checked and verified the request initiation and data flow.
+- Server-side testing: Moving onto the server, I tested request handling and response generation, ensuring that all processes were functioning as intended.
+- Database diagnostics: I examined the database connections and transactions to rule out any issues of data persistence or retrieval.
 
+This comprehensive, step-by-step approach not only enabled me to precisely locate and fix the problems but also enriched my understanding of how different parts of a web application interact and depend on each other. It was a leap forward in my journey as a software developer, equipping me with critical debugging skills and a deeper appreciation for detailed testing and analysis.
