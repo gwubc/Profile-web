@@ -8,7 +8,7 @@ pipeline {
 	stage('Scm'){
 	   steps {
        checkout scmGit(
-    branches: [[name: "release"]],
+    branches: [[name: "main"]],
     userRemoteConfigs: [[credentialsId:  "github",
         url: "git@github.com:gwubc/Profile-web.git"]])
              

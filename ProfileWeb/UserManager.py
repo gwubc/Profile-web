@@ -73,9 +73,9 @@ class UserManager:
         """
         user = None
         user_data = self._users.find_one({'username': username})
-        logger.debug(f"find_user_by_username: {username}")
+        logger.debug("find_user_by_username: %s", username)
         if user_data:
-            logger.debug(f"find_user_by_username success name: {username}")
+            logger.debug("find_user_by_username success name: %s", username)
             user = self._create_user(user_data)
         return user
 
@@ -92,9 +92,9 @@ class UserManager:
 
         user = None
         user_data = self._users.find_one({'_id': ObjectId(user_id)})
-        logger.debug(f"find_user_by_id: {user_id}")
+        logger.debug("find_user_by_id: %s", user_id)
         if user_data:
-            logger.debug(f"find_user_by_id success id: {user_id}")
+            logger.debug("find_user_by_id success id: %s", user_id)
             user = self._create_user(user_data)
         return user
 
@@ -118,19 +118,19 @@ class UserManager:
 
         user = self.find_user_by_id(user_id)
         if not user:
-            logger.debug(f"User: {user_id} not found")
+            logger.debug("User: %s not found", user_id)
             raise AttributeError(f"User: {user_id} not found")
 
         try:
             result = self._users.update_one({"_id": ObjectId(user_id)}, {"$set": {"introduction": introduction}})
             if result.modified_count == 0:
-                logger.debug(f"update_user: {user_id} failed")
+                logger.debug("update_user: %s failed", user_id)
                 raise Exception("Not modified")
             return True
 
         except Exception as e:
-            logger.debug(f"update_user: {user_id} failed {e}")
-            raise Exception(e)
+            logger.debug("update_user: %s failed %s", user_id, e)
+            raise e
 
     def verify_password(self, user: User, password: str):
         """
