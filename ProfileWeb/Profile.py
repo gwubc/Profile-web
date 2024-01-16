@@ -74,7 +74,8 @@ class Profile:
         """
         try:
             new_introduction = request.json['introduction']
-            self._user_manager.update_user_introduction(current_user.id, new_introduction)
+            if current_user.introduction != new_introduction:
+                self._user_manager.update_user_introduction(current_user.id, new_introduction)
             return jsonify({"success": True}), 200
         except AttributeError:
             return jsonify({"success": False}), 401

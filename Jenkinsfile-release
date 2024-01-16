@@ -8,9 +8,9 @@ pipeline {
 	stage('Scm'){
 	   steps {
        checkout scmGit(
-    branches: [[name: "main"]],
-    userRemoteConfigs: [[credentialsId:  "github",
-        url: "git@github.com:gwubc/Profile-web.git"]])
+            branches: [[name: "main"]],
+            userRemoteConfigs: [[credentialsId:  "github",
+                url: "git@github.com:gwubc/Profile-web.git"]])
              
 	   }
 	}
@@ -44,7 +44,6 @@ pipeline {
                 
                 sshagent(credentials: ['ubuntu-oracle']) {
                 sh '''
-                pwd
                 hostip="146.235.232.244"
                 rsync  -av compose.yaml ubuntu@${hostip}:~/deploy/
                 rsync  -av start.sh  ubuntu@${hostip}:~/deploy/
