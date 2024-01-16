@@ -29,3 +29,21 @@ To combat this, I used a component-wise testing strategy. This involved:
 - Database diagnostics: I examined the database connections and transactions to rule out any issues of data persistence or retrieval.
 
 This comprehensive, step-by-step approach not only enabled me to precisely locate and fix the problems but also enriched my understanding of how different parts of a web application interact and depend on each other. It was a leap forward in my journey as a software developer, equipping me with critical debugging skills and a deeper appreciation for detailed testing and analysis.
+
+
+## Jenkins pipeline
+
+This project is structured around a five-stage pipeline, providing a clear and organized framework for development and troubleshooting. This sequential approach allowing for efficient identification and resolution of any issues that may arise.
+Also, integration of Pylint and coverage tools ensures the code quality remains high.
+
+<img src="./readme_file/stage.png" width="600" />
+<img src="./readme_file/tools.png" width="600" />
+
+
+## The UI
+
+<p float="left">
+  <img src="./readme_file/login.png" width="300" />
+  <img src="./readme_file/registration.png" width="300" /> 
+  <img src="./readme_file/profile.png" width="300" />
+</p>
