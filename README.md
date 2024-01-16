@@ -31,6 +31,32 @@ To combat this, I used a component-wise testing strategy. This involved:
 This comprehensive, step-by-step approach not only enabled me to precisely locate and fix the problems but also enriched my understanding of how different parts of a web application interact and depend on each other. It was a leap forward in my journey as a software developer, equipping me with critical debugging skills and a deeper appreciation for detailed testing and analysis.
 
 
+## User Story 
+#### User Story 1: New User Registration
+As a new visitor to the ProfileWeb application,
+I want to be able to create a new user account,
+So that I can access exclusive features available to registered users.
+
+Acceptance Criteria:
+
+- The homepage should have a clear option to create a new account.
+- Upon selecting the option, I should be guided to a registration form.
+- The form should require essential details like name, and password.
+- There should be a clear indication of successful registration or errors if any.
+
+
+#### User Story 3: Profile Management
+As a logged-in user,
+I want to update my profile information,
+So that I can keep my personal details up-to-date.
+
+Acceptance Criteria:
+
+- There should be an option to view and edit my profile in the user dashboard.
+- I should be able to update the profile.
+- Changes should be saved immediately and reflected in my profile.
+
+
 ## Jenkins pipeline
 
 This project is structured around a five-stage pipeline, providing a clear and organized framework for development and troubleshooting. This sequential approach allowing for efficient identification and resolution of any issues that may arise.
