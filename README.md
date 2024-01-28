@@ -73,7 +73,7 @@ Acceptance Criteria:
 ## Jenkins pipeline
 
 This project is structured around a five-stage pipeline, providing a clear and organized framework for development and troubleshooting. This sequential approach allowing for efficient identification and resolution of any issues that may arise.
-Also, integration of Pylint and coverage tools ensures the code quality remains high.
+Also, integration of Pylint and coverage tools ensures the code quality remains high. Additionally, the build process is automatically triggered by GitHub webhooks, ensuring seamless integration and continuous deployment.
 
 <img src="./readme_file/stage.png" width="600" />
 <img src="./readme_file/tools.png" width="600" />
